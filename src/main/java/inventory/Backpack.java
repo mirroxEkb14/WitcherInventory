@@ -4,7 +4,7 @@ import model.categories.BackpackCategory;
 import model.items.Bomb;
 import model.items.Oil;
 import model.items.Potion;
-import utils.*;
+import utils.items.*;
 
 import java.util.*;
 import java.util.logging.Logger;

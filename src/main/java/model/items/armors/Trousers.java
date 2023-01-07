@@ -1,6 +1,6 @@
 package model.items.armors;
 
-import utils.Armor;
+import utils.items.Armor;
 
 public enum Trousers implements Armor {
     WOLVEN_TROUSERS,

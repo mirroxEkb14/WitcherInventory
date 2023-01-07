@@ -1,4 +1,4 @@
-package utils;
+package utils.items;
 
 /**
  * Represents: Steel weapon, Silver sword, Bolts, Ranged weapon

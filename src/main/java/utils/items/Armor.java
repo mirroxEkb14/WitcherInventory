@@ -1,4 +1,4 @@
-package utils;
+package utils.items;
 
 /**
  * Represents: Chest armor, Gloves, Trousers, Boots

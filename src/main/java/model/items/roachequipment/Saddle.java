@@ -1,6 +1,6 @@
 package model.items.roachequipment;
 
-import utils.Roach;
+import utils.items.Roach;
 
 public enum Saddle implements Roach {
     SIR_GERALT_OF_RIVIAS_SADDLE,

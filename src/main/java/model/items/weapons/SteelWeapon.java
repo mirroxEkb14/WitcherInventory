@@ -1,6 +1,6 @@
 package model.items.weapons;
 
-import utils.Weapon;
+import utils.items.Weapon;
 
 public enum SteelWeapon implements Weapon {
     WOLVEN_STEEL_SWORD,

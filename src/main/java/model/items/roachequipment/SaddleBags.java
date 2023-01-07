@@ -1,6 +1,6 @@
 package model.items.roachequipment;
 
-import utils.Roach;
+import utils.items.Roach;
 
 public enum SaddleBags implements Roach {
     TEMERIAN_SADDLEBAGS,

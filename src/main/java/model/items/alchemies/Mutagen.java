@@ -1,6 +1,6 @@
 package model.items.alchemies;
 
-import utils.AlchemyIngredient;
+import utils.items.AlchemyIngredient;
 
 public enum Mutagen implements AlchemyIngredient {
     BLUE_MUTAGEN,

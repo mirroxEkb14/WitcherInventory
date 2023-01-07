@@ -1,6 +1,6 @@
 package model.items.craftings;
 
-import utils.CraftingComponent;
+import utils.items.CraftingComponent;
 
 public enum Ingot implements CraftingComponent {
     STEEL_INGOT,

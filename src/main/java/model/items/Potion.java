@@ -1,6 +1,6 @@
 package model.items;
 
-import utils.Consumables;
+import utils.items.Consumables;
 
 public enum Potion implements Consumables {
     SUPERIOR_CAT,

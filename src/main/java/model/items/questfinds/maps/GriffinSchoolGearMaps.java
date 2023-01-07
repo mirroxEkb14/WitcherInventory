@@ -1,6 +1,6 @@
 package model.items.questfinds.maps;
 
-import utils.QuestFind;
+import utils.items.QuestFind;
 import utils.collections.Collectable;
 
 public enum GriffinSchoolGearMaps implements QuestFind, Collectable {

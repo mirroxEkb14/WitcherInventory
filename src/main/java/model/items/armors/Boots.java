@@ -1,6 +1,6 @@
 package model.items.armors;
 
-import utils.Armor;
+import utils.items.Armor;
 
 public enum Boots implements Armor {
     WOLVEN_BOOTS,

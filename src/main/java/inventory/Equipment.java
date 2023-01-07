@@ -2,7 +2,7 @@ package inventory;
 
 import model.items.Bomb;
 import model.items.Potion;
-import utils.*;
+import utils.items.*;
 
 import java.util.Arrays;
 import java.util.List;

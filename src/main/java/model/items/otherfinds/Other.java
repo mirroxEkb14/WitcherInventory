@@ -1,6 +1,6 @@
 package model.items.otherfinds;
 
-import utils.OtherFind;
+import utils.items.OtherFind;
 
 public enum Other implements OtherFind {
     XENOVOX,

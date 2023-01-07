@@ -1,6 +1,6 @@
 package model.items.craftings;
 
-import utils.CraftingComponent;
+import utils.items.CraftingComponent;
 
 public enum MonsterDrop implements CraftingComponent {
     VENOM_EXTRACT,

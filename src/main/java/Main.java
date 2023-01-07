@@ -1,6 +1,10 @@
-import model.items.Bomb;
-import model.items.Oil;
-import model.items.Potion;
+
+import model.characters.Monster;
+import model.characters.heroes.Geralt;
+import model.characters.kinds.entities.HeroKind;
+import model.characters.kinds.entities.MonsterKind;
+import model.characters.monsters.*;
+import model.items.*;
 import model.items.questfinds.maps.GriffinSchoolGearMaps;
 import model.items.questfinds.maps.WolvenSchoolGearMaps;
 import model.items.weapons.*;
@@ -14,8 +18,12 @@ import model.items.alchemies.*;
 import inventory.Backpack;
 import inventory.Equipment;
 import service.CollectionService;
+import service.Printer;
 import service.output.FileService;
 import utils.collections.Collectable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zea1ot 1/5/2023
@@ -52,6 +60,38 @@ public class Main {
         // show collectable items from Backpack
         System.out.printf("\n\nWolven gear collection: %s\n", CollectionService.getWolvenGearMapsString());
         System.out.printf("Griffin gear collection: %s\n", CollectionService.getGriffinGearMapsString());
+
+        // init monsters and heroes
+        List<Monster> monsters = getMonsters();
+        Geralt witcher = new Geralt(HeroKind.GERALT_OF_RIVIA);
+
+        // print all the monsters and heroes to the console
+        System.out.println("\n");
+        Printer<Geralt> geraltPrinter = new Printer<>(witcher);
+        geraltPrinter.print();
+
+        for (Monster monster : monsters) {
+            Printer<Monster> monsterPrinter = new Printer<>(monster);
+            monsterPrinter.print();
+        }
+    }
+
+    private static ArrayList<Monster> getMonsters() {
+        ArrayList<Monster> monsters = new ArrayList<>();
+
+        Nekker nekker = new Nekker(MonsterKind.OGROID);
+        Drowner drowner = new Drowner(MonsterKind.NECROPHAGE);
+        Ghoul ghoul = new Ghoul(MonsterKind.NECROPHAGE);
+        Alghoul alghoul = new Alghoul(MonsterKind.NECROPHAGE);
+        IceGiant iceGiant = new IceGiant(MonsterKind.OGROID);
+
+        monsters.add(nekker);
+        monsters.add(drowner);
+        monsters.add(ghoul);
+        monsters.add(alghoul);
+        monsters.add(iceGiant);
+
+        return monsters;
     }
 
     private static void imitateTakingItems() {

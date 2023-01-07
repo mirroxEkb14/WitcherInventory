@@ -1,6 +1,6 @@
 package model.items.questfinds;
 
-import utils.QuestFind;
+import utils.items.QuestFind;
 
 public enum Key implements QuestFind {
     KEY_TO_YENNEFERS_ROOM,

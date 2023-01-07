@@ -1,7 +1,7 @@
 package model.items.eatable;
 
-import utils.Consumables;
-import utils.Eatable;
+import utils.items.Consumables;
+import utils.items.Eatable;
 
 public enum Drink implements Eatable, Consumables {
     GERALT_OF_RIVIA,

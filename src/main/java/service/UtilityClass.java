@@ -2,7 +2,7 @@ package service;
 
 import inventory.Equipment;
 import model.items.Bomb;
-import utils.*;
+import utils.items.*;
 
 import java.util.Arrays;
 import java.util.Objects;

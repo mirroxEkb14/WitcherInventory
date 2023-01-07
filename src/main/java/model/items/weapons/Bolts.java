@@ -1,6 +1,6 @@
 package model.items.weapons;
 
-import utils.Weapon;
+import utils.items.Weapon;
 
 public enum Bolts implements Weapon {
     TRACKING_BOLT,
