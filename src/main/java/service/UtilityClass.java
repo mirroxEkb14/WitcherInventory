@@ -2,6 +2,7 @@ package service;
 
 import inventory.Equipment;
 import model.items.Bomb;
+import utils.collections.Collectable;
 import utils.items.*;
 
 import java.util.Arrays;
@@ -22,6 +23,18 @@ public final class UtilityClass {
     // if the array is either 'null' or [null]
     public static <Thing> boolean isArrayEmpty(Thing[] array) {
         return array == null || Arrays.stream(array).allMatch(Objects::isNull);
+    }
+
+    /**
+     * Generic/Parameterized method
+     * Check either all the array elements are non-nulls or there are nulls
+     *
+     * @param array     array with items to collect
+     * @param <T>       type of the array (implements Collectable)
+     * @return          true if the array elements are non-null, false if there is at least one null element
+     */
+    public static <T extends Collectable> boolean isArrayFull(T[] array) {
+        return array[array.length - 1] != null;
     }
 
     // if the string is either 'null', empty "" or blank " "

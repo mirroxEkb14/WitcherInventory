@@ -5,8 +5,12 @@ import model.items.questfinds.maps.WolvenSchoolGearMaps;
 import utils.collections.Collectable;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
+import static service.logger.LoggerHandler.getLogger;
 
 /**
  * Contains arrays with items that can be collected
@@ -16,6 +20,9 @@ public final class CollectionService {
 
     private static WolvenSchoolGearMaps[] wolvenGearMaps = new WolvenSchoolGearMaps[1];
     private static GriffinSchoolGearMaps[] griffinGearMaps = new GriffinSchoolGearMaps[1];
+
+    private static final Logger log =
+            getLogger(CollectionService.class.getSimpleName()).orElseThrow(() -> new IllegalArgumentException("class.getName() not passed"));
 
     public static void addCollectionItem(Collectable item) {
         if (item instanceof WolvenSchoolGearMaps) {
@@ -42,7 +49,7 @@ public final class CollectionService {
      * @return          original array or an array with the same elements but length incremented by one
      */
     private static <T extends Collectable> T[] getUpdatedArray(T[] array) {
-        return isArrayFull(array) ? getExtendedArray(array) : array;
+        return UtilityClass.isArrayFull(array) ? getExtendedArray(array) : array;
     }
 
     /**
@@ -55,18 +62,6 @@ public final class CollectionService {
      */
     private static <T extends Collectable> T[] getExtendedArray(T[] array) {
         return Arrays.copyOf(array, array.length + 1);
-    }
-
-    /**
-     * Generic/Parameterized method
-     * Check either all the array elements are non-nulls or there are nulls
-     *
-     * @param array     array with items to collect
-     * @param <T>       type of the array (implements Collectable)
-     * @return          true if the array elements are non-null, false if there is at least one null element
-     */
-    private static <T extends Collectable> boolean isArrayFull(T[] array) {
-        return array[array.length - 1] != null;
     }
 
     /**
@@ -87,10 +82,18 @@ public final class CollectionService {
     }
 
     public static List<String> getWolvenGearMapsString() {
+        if (UtilityClass.isArrayEmpty(wolvenGearMaps)) {
+            log.severe("wolvenGearMaps is null.");
+            return Collections.emptyList();
+        }
         return Arrays.stream(wolvenGearMaps).map(Enum::toString).collect(Collectors.toList());
     }
 
     public static List<String> getGriffinGearMapsString() {
+        if (UtilityClass.isArrayEmpty(griffinGearMaps)) {
+            log.severe("griffinGearMaps is null.");
+            return Collections.emptyList();
+        }
         return Arrays.stream(griffinGearMaps).map(Enum::toString).collect(Collectors.toList());
     }
 }

@@ -16,4 +16,8 @@ public class Geralt extends Hero {
     public Geralt(HeroKind heroKind) {
         super(heroKind, MIN_HIT_RATE, MIN_HP);
     }
+
+    public static int getMIN_HP() {
+        return MIN_HP;
+    }
 }

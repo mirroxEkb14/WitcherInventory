@@ -1,5 +1,6 @@
 package inventory;
 
+import model.characters.heroes.Geralt;
 import model.items.Bomb;
 import model.items.Potion;
 import utils.items.*;
@@ -38,7 +39,7 @@ public final class Equipment {
     // it's a singleton class - only one instance and a private constructor
     private static Equipment characterInstance = null;
 
-    private int vitality = 100;
+    private int vitality = Geralt.getMIN_HP();
     private double toxicity = 0.00;
 
     private Equipment() {}
@@ -174,7 +175,6 @@ public final class Equipment {
     public void setConsumablesSlot(int slotIndex, Consumables consumableItem) {
         if (validateSlot(slotIndex, consumableItem)) {
             if (consumablesSlots.get(slotIndex) != null) {
-
                 if (consumablesSlots.get(slotIndex) instanceof Eatable) {
                     Backpack.getInstance().add((Eatable) consumablesSlots.get(slotIndex));
                 } else {

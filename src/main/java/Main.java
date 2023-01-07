@@ -1,4 +1,5 @@
 
+import model.characters.Hero;
 import model.characters.Monster;
 import model.characters.heroes.Geralt;
 import model.characters.kinds.entities.HeroKind;
@@ -24,6 +25,7 @@ import utils.collections.Collectable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author zea1ot 1/5/2023
@@ -42,11 +44,10 @@ public class Main {
         System.out.printf("\n\nWitcher's backpack after equipping: \n%s\n", witcherBackpack.getBackpackString());
 
         // show stats
-        System.out.printf("\n\nStats before battle and potion drinking: \nHP %d\tXP %,.2f\n",
+        System.out.printf("\n\nStats before drinking potion: \nHP %d\tXP %,.2f\n",
                 witcherEquipment.getVitality(), witcherEquipment.getToxicity());
-        imitateBattle();
         imitatePotionDrinking();
-        System.out.printf("Stats after battle and potion drinking: \nHP %d\tXP %,.2f%s\n",
+        System.out.printf("Stats after drinking potion : \nHP %d\tXP %,.2f%s\n",
                 witcherEquipment.getVitality(), witcherEquipment.getToxicity(), "%");
 
         // write/read the inventory
@@ -73,6 +74,50 @@ public class Main {
         for (Monster monster : monsters) {
             Printer<Monster> monsterPrinter = new Printer<>(monster);
             monsterPrinter.print();
+        }
+
+        // print the hero and monster after the battle
+        System.out.println("\n\n============ BattleField ============");
+        Monster fightingMonster = monsters.get(0);
+        imitateBattle(witcher, monsters.get(0));
+        System.out.print("\nHero after the battle: ");
+        geraltPrinter.print();
+        System.out.print("Monster after the battle: ");
+        new Printer<>(fightingMonster).print();
+        System.out.println("\n============ BattleField ============");
+    }
+
+    private static void imitateBattle(Hero hero, Monster monster) {
+
+        // FIGHT!
+        while (hero.isAlive() && monster.isAlive()) {
+            int hitChance = Randomizer.getHitChange();
+
+            if (hitChance == 0) {
+                boolean hitResult = monster.hit(hero);
+                if (hitResult) {
+                    System.out.printf("\n%s hits %s\n%dhp - %dhp\n",
+                            monster.getName(), hero.getHeroKind(), monster.getHp(), hero.getHp());
+                } else {
+                    System.out.printf("\n%s missed!\n", hero.getHeroKind());
+                }
+
+            } else if (hitChance == 1) {
+                boolean hitResult = hero.hit(monster);
+                if (hitResult) {
+                    System.out.printf("\n%s hits %s\n%dhp - %dhp\n",
+                            hero.getHeroKind(), monster.getName(), hero.getHp(), monster.getHp());
+                } else {
+                    System.out.printf("\n%s missed!\n", hero.getHeroKind());
+                }
+            }
+        }
+
+        // who's won?
+        if (hero.isDead()) {
+            System.out.printf("\n%s died bravely.\n", hero.getHeroKind());
+        } else {
+            System.out.printf("\n%s defeated %s.\n", hero.getHeroKind(), monster.getName());
         }
     }
 
@@ -115,11 +160,6 @@ public class Main {
             }
             witcherBackpack.addObject(drop);
         }
-    }
-
-    private static void imitateBattle() {
-        witcherEquipment.decreaseVitality(54);
-        witcherEquipment.increaseVitality(10);
     }
 
     private static void imitatePotionDrinking() {
@@ -258,5 +298,20 @@ public class Main {
         witcherBackpack.add(Mutagen.BLUE_MUTAGEN);
         witcherBackpack.add(Mutagen.LESSER_GREEN_MUTAGEN);
         witcherBackpack.add(Mutagen.GREATER_RED_MUTAGEN);
+    }
+
+    /**
+     * Inner/Nested class
+     * Contains methods that are not related to the game topic
+     */
+    private static class Randomizer {
+
+        private static final Random random = new Random();
+
+        // returns either 0 or 1
+        // 0 - monster hits, 1 - hero hits
+        public static int getHitChange() {
+            return random.nextInt(2);
+        }
     }
 }

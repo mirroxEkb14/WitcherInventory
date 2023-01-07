@@ -4,7 +4,7 @@ import java.util.Random;
 
 public abstract class Entity {
 
-    private final int hp;
+    private int hp;
     private int hitRate;
 
     public Entity(int hp, int hitRate) {
@@ -26,6 +26,10 @@ public abstract class Entity {
 
     public int getHp() {
         return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public int getHitRate() {

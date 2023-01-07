@@ -27,9 +27,16 @@ public abstract class Monster extends Entity implements Fighter {
      * @return      either hitRate (successful attack), or 0 (miss)
      */
     @Override
-    public int hit() {
+    public boolean hit(Entity entity) {
         int randomNumber = getRandom();
-        return (randomNumber + fortuneMark > getHitRate() / 2) ? getHitRate() : 0;
+        int attackPower = (randomNumber + fortuneMark > getHitRate() / 2) ? getHitRate() : 0;
+
+        if (attackPower == 0) {
+            return false;
+        } else {
+            entity.setHp(entity.getHp() - attackPower);
+            return true;
+        }
     }
 
     public MonsterKind getMonsterKind() {
