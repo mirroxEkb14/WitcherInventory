@@ -278,3 +278,83 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-01-07T14:35:52.974391300Z</date>
+  <millis>1673102152974</millis>
+  <nanos>391300</nanos>
+  <sequence>0</sequence>
+  <logger>Equipment</logger>
+  <level>SEVERE</level>
+  <class>inventory.Equipment</class>
+  <method>increaseVitality</method>
+  <thread>1</thread>
+  <message>Integer is negative.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-01-07T14:49:42.009337800Z</date>
+  <millis>1673102982009</millis>
+  <nanos>337800</nanos>
+  <sequence>0</sequence>
+  <logger>Equipment</logger>
+  <level>SEVERE</level>
+  <class>inventory.Equipment</class>
+  <method>increaseVitality</method>
+  <thread>1</thread>
+  <message>Integer is negative.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-01-07T14:49:51.350805600Z</date>
+  <millis>1673102991350</millis>
+  <nanos>805600</nanos>
+  <sequence>0</sequence>
+  <logger>Equipment</logger>
+  <level>SEVERE</level>
+  <class>inventory.Equipment</class>
+  <method>setWeaponSlot</method>
+  <thread>1</thread>
+  <message>slotIndex or weaponItem bad input.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-01-07T14:51:07.143860600Z</date>
+  <millis>1673103067143</millis>
+  <nanos>860600</nanos>
+  <sequence>0</sequence>
+  <logger>Equipment</logger>
+  <level>SEVERE</level>
+  <class>inventory.Equipment</class>
+  <method>setWeaponSlot</method>
+  <thread>1</thread>
+  <message>slotIndex or weaponItem bad input.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-01-07T14:54:23.006860800Z</date>
+  <millis>1673103263006</millis>
+  <nanos>860800</nanos>
+  <sequence>0</sequence>
+  <logger>Equipment</logger>
+  <level>SEVERE</level>
+  <class>inventory.Equipment</class>
+  <method>setWeaponSlot</method>
+  <thread>1</thread>
+  <message>slotIndex or weaponItem bad input.</message>
+</record>
+</log>

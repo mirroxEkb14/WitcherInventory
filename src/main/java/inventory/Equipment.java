@@ -3,14 +3,13 @@ package inventory;
 import model.characters.heroes.Geralt;
 import model.items.Bomb;
 import model.items.Potion;
+import service.UtilityClass;
 import utils.items.*;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static service.UtilityClass.isIntegerNegative;
-import static service.UtilityClass.validateSlot;
 import static service.logger.LoggerHandler.getLogger;
 
 /**
@@ -94,7 +93,7 @@ public final class Equipment {
     }
 
     public void increaseVitality(int degree) {
-        if (isIntegerNegative(degree)) {
+        if (UtilityClass.isIntegerNegative(degree)) {
             log.severe("Integer is negative.");
             return;
         }
@@ -102,7 +101,7 @@ public final class Equipment {
     }
 
     public void decreaseVitality(int degree) {
-        if (isIntegerNegative(degree)) {
+        if (UtilityClass.isIntegerNegative(degree)) {
             log.severe("Integer is negative.");
             return;
         } else if (vitality <= 0) {
@@ -117,7 +116,7 @@ public final class Equipment {
     }
 
     public void increaseToxicity(int degree) {
-        if (isIntegerNegative(degree)) {
+        if (UtilityClass.isIntegerNegative(degree)) {
             log.severe("Integer is negative.");
             return;
         }
@@ -125,7 +124,7 @@ public final class Equipment {
     }
 
     public void decreaseToxicity(int degree) {
-        if (isIntegerNegative(degree)) {
+        if (UtilityClass.isIntegerNegative(degree)) {
             log.severe("Integer is negative.");
         } else if (toxicity - degree <= 0) {
             toxicity = 0;
@@ -135,7 +134,7 @@ public final class Equipment {
     }
 
     public void setWeaponSlot(int slotIndex, Weapon weaponItem) {
-        if (validateSlot(slotIndex, weaponItem)) {
+        if (UtilityClass.validateSlot(slotIndex, weaponItem)) {
             // if there is some item in the slot, put it in the backpack
             if (weaponSlots.get(slotIndex) != null) {
                 Backpack.getInstance().add(weaponSlots.get(slotIndex));
@@ -148,7 +147,7 @@ public final class Equipment {
     }
 
     public void setArmorSlot(int slotIndex, Armor armorItem) {
-        if (validateSlot(slotIndex, armorItem)) {
+        if (UtilityClass.validateSlot(slotIndex, armorItem)) {
             if (armorSlots.get(slotIndex) != null) {
                 Backpack.getInstance().add(armorSlots.get(slotIndex));
             }
@@ -160,7 +159,7 @@ public final class Equipment {
     }
 
     public void setRoachSlot(int slotIndex, Roach roachItem) {
-        if (validateSlot(slotIndex, roachItem)) {
+        if (UtilityClass.validateSlot(slotIndex, roachItem)) {
             if (roachSlots.get(slotIndex) != null) {
                 Backpack.getInstance().add(roachSlots.get(slotIndex));
             }
@@ -173,7 +172,7 @@ public final class Equipment {
 
     // NOTE: Consumables can contain either Eatable (Food, Drink) or Potion
     public void setConsumablesSlot(int slotIndex, Consumables consumableItem) {
-        if (validateSlot(slotIndex, consumableItem)) {
+        if (UtilityClass.validateSlot(slotIndex, consumableItem)) {
             if (consumablesSlots.get(slotIndex) != null) {
                 if (consumablesSlots.get(slotIndex) instanceof Eatable) {
                     Backpack.getInstance().add((Eatable) consumablesSlots.get(slotIndex));
@@ -194,7 +193,7 @@ public final class Equipment {
     }
 
     public void setBombSlot(int slotIndex, Bomb bombItem) {
-        if (validateSlot(slotIndex, bombItem)) {
+        if (UtilityClass.validateSlot(slotIndex, bombItem)) {
             if (bombSlots.get(slotIndex) != null) {
                 Backpack.getInstance().add(bombSlots.get(slotIndex));
             }
@@ -206,7 +205,7 @@ public final class Equipment {
     }
 
     public void setPocketsSlot(int slotIndex, QuestFind questItem) {
-        if (validateSlot(slotIndex, questItem)) {
+        if (UtilityClass.validateSlot(slotIndex, questItem)) {
             if (pocketSlots.get(slotIndex) != null) {
                 Backpack.getInstance().add(pocketSlots.get(slotIndex));
             }
