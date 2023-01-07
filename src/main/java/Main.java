@@ -6,6 +6,7 @@ import model.characters.kinds.entities.HeroKind;
 import model.characters.kinds.entities.MonsterKind;
 import model.characters.monsters.*;
 import model.items.*;
+import model.items.otherfinds.Currency;
 import model.items.questfinds.maps.GriffinSchoolGearMaps;
 import model.items.questfinds.maps.WolvenSchoolGearMaps;
 import model.items.weapons.*;
@@ -23,9 +24,9 @@ import service.Printer;
 import service.output.FileService;
 import utils.collections.Collectable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author zea1ot 1/5/2023
@@ -70,7 +71,35 @@ public class Main {
         System.out.println("\n");
         Printer<Geralt> geraltPrinter = new Printer<>(witcher);
         geraltPrinter.print();
+        for (Monster monster : monsters) {
+            Printer<Monster> monsterPrinter = new Printer<>(monster);
+            monsterPrinter.print();
+        }
 
+        // count each kind of monster
+        Map<MonsterKind, Long> groupedMonsters = monsters.stream()
+                .collect(Collectors.groupingBy(Monster::getMonsterKind, Collectors.counting()));
+        System.out.println("\n\nMonsters amount according to their kind: " + groupedMonsters);
+
+        // sort all the monsters in alphabetical order by their name (Comparable<T>)
+        Collections.sort(monsters);
+        System.out.println("\n\nMonsters after sorted in alphabetical order: ");
+        for (Monster monster : monsters) {
+            Printer<Monster> monsterPrinter = new Printer<>(monster);
+            monsterPrinter.print();
+        }
+
+        // sort the monsters by HP
+        monsters.sort(new Monster.HPComparator());
+        System.out.println("\n\nMonsters after sorted by their HP: ");
+        for (Monster monster : monsters) {
+            Printer<Monster> monsterPrinter = new Printer<>(monster);
+            monsterPrinter.print();
+        }
+
+        // sort the monsters by hitRate
+        monsters.sort(new Monster.HitRateComparator());
+        System.out.println("\n\nMonsters after sorted by the degree of danger (their attack amount): ");
         for (Monster monster : monsters) {
             Printer<Monster> monsterPrinter = new Printer<>(monster);
             monsterPrinter.print();

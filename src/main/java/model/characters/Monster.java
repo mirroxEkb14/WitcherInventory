@@ -3,10 +3,13 @@ package model.characters;
 import model.characters.kinds.entities.MonsterKind;
 import utils.Fighter;
 
+import java.util.Comparator;
+import java.util.Objects;
+
 /**
  * Contains attributes and methods that all the monsters have
  */
-public abstract class Monster extends Entity implements Fighter {
+public abstract class Monster extends Entity implements Fighter, Comparable<Monster> {
 
     private final MonsterKind monsterKind;
     private final String name;
@@ -39,6 +42,16 @@ public abstract class Monster extends Entity implements Fighter {
         }
     }
 
+    // Comparable<T> is used when we want to sort objects
+    // compare all monster objects according to their name (in alphabetical order)
+    @Override
+    public int compareTo(Monster o) {
+        // this > o = +
+        // this < o = -
+        // this == o = 0
+        return this.getName().compareTo(o.getName());
+    }
+
     public MonsterKind getMonsterKind() {
         return monsterKind;
     }
@@ -49,5 +62,39 @@ public abstract class Monster extends Entity implements Fighter {
 
     public int getFortuneMark() {
         return fortuneMark;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Monster monster = (Monster) o;
+        return monsterKind == monster.monsterKind && name.equals(monster.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(monsterKind, name);
+    }
+
+    /**
+     * Comparator<T> is used then we want to sort one object in different ways
+     * Contains one single method to compare all monster objects according to their HP
+     */
+    public static class HPComparator implements Comparator<Monster> {
+        @Override
+        public int compare(Monster o1, Monster o2) {
+            return Integer.compare(o1.getHp(), o2.getHp());
+        }
+    }
+
+    /**
+     * To compare monsters according to the hitRate
+     */
+    public static class HitRateComparator implements Comparator<Monster> {
+        @Override
+        public int compare(Monster o1, Monster o2) {
+            return Integer.compare(o1.getHitRate(), o2.getHitRate());
+        }
     }
 }

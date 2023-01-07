@@ -35,12 +35,4 @@ public abstract class Entity {
     public int getHitRate() {
         return hitRate;
     }
-
-    @Override
-    public String toString() {
-        return "Entity{" +
-                "hp=" + hp +
-                ", hitRate=" + hitRate +
-                '}';
-    }
 }
