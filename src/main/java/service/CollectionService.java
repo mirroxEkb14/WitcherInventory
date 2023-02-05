@@ -40,7 +40,7 @@ public final class CollectionService {
     }
 
     /**
-     * Generic/Parameterized method
+     * Generic/Parameterized method (upper bound -> any Collectable and its subclasses)
      * Check the length of the array and return either the original one,
      *      or copied array with the length incremented by one
      *

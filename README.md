@@ -7,4 +7,3 @@ For a better understanding you can see _src/resources/inventory_img.png_
 
 ### Interfaces
 The interfaces play a role of markers, their aim is to create a common feature between the enums that represent one same category. So that, we can store the enums in the same list
-
